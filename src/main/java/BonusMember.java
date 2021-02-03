@@ -1,2 +1,2 @@
-public class BonusMembe {
+public class BonusMember {
 }
