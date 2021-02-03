@@ -1,6 +1,5 @@
 public class BasicMembership extends Membership {
 
-    private final float POINTS_SCALING_FACTOR = 1.2f;
 
     @Override
     public int registerPoints(int bonusPointBalance, int newPoints) {
