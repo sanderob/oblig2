@@ -1,10 +1,10 @@
-public class Membership {
+public abstract class Membership {
 
-    public int registerPoints(int bonusPointBalance, int newPoints) {
+    BasicMembership basicMembership = new BasicMembership();
+    SilverMembership silverMembership = new SilverMembership();
+    GoldMembership goldMembership = new GoldMembership();
 
-    };
+    public abstract int registerPoints(int bonusPointBalance, int newPoints);
 
-    public String getMembershipName() {
-
-    }
+    public abstract String getMembershipName();
 }
