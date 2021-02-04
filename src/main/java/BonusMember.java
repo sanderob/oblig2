@@ -47,6 +47,10 @@ public class BonusMember {
         return this.enrolledDate;
     }
 
+    public Membership getMembership() {
+        return this.membership;
+    }
+
     public void setMembership(Membership membership) {
         this.membership = membership;
     }
@@ -81,16 +85,5 @@ public class BonusMember {
             this.checkAndSetMembership();
     }
 
-    public String getMembershipLevel() {
-        if (this.membership instanceof GoldMembership) {
-            return "Gold";
-        }
-        else if (this.membership instanceof SilverMembership) {
-            return "Silver";
-        }
-        else {
-            return "Basic";
-        }
-    }
 
 }
