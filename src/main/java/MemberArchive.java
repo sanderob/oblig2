@@ -14,7 +14,6 @@ public class MemberArchive {
 
     // Use a HashMap, since the members have a unique member number.
     private HashMap<Integer, BonusMember> members;
-    private UserInput ui = new UserInput();
 
     /**
      * Creates a new instance of MemberArchive.
@@ -22,11 +21,6 @@ public class MemberArchive {
     public MemberArchive() {
         this.members = new HashMap<>();
         this.fillRegisterWithTestdata();
-    }
-
-    public void newBonusMember() {
-       BonusMember member = createMember();
-        addMember(member);
     }
 
     /**
@@ -49,30 +43,7 @@ public class MemberArchive {
         return success;
     }
 
-    public BonusMember createMember() {
-        int memberNumber = members.size() + 1;
-        LocalDate enrolledDate = LocalDate.now();
-        int bonusPointsBalance;
-        String name;
-        String eMailAddress;
-        String password;
 
-        System.out.println("Please enter the members full name:");
-        name = ui.getString();
-
-        System.out.println("Please enter the members E-mail:");
-        eMailAddress = ui.getString();
-
-        System.out.println("Please enter a password:");
-        password = ui.getString();
-
-        System.out.println("Please enter the entry bonus point balance");
-        bonusPointsBalance = ui.getInteger();
-
-        BonusMember member = new BonusMember(memberNumber, enrolledDate, bonusPointsBalance, name, eMailAddress, password);
-
-        return member;
-    }
 
     /**
      * Registers new bonuspoints to the member with the member number given
@@ -113,7 +84,7 @@ public class MemberArchive {
             System.out.println("Nr. ------ Name ------ E-mail ------ Balance ------ Membership level ------ Enrolled Date");
         }
         System.out.println(member.getMemberNumber() + "     " + member.getName() + "     " + member.geteMailAddress()
-                + "     " + member.getBonusPointsBalance() + "     " + member.getMembershipLevel()  + "     " + member.getEnrolledDate());
+                + "     " + member.getBonusPointsBalance() + "     " + member.getMembership().getMembershipName()  + "     " + member.getEnrolledDate());
     }
 
     public BonusMember findMember(int memberNumber) {
