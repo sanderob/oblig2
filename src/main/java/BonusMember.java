@@ -1,6 +1,13 @@
+/**
+ * The class representing a single bonus member, used in the bonus member archive
+ * @author Sander
+ * @version 1.0.0
+ */
+
 import java.time.LocalDate;
 
 public class BonusMember {
+
     private int memberNumber;
     private LocalDate enrolledDate;
     private int bonusPointsBalance = 0;
@@ -12,6 +19,15 @@ public class BonusMember {
     private static final int SILVER_LIMIT = 25000;
     private static final int GOLD_LIMIT = 75000;
 
+    /**
+     * Creates a new instance of a BonusMember
+     * @param memberNumber The memberNumber, used for reference in the HashMap-archive
+     * @param enrolledDate The date of the enrollment. To be used in later development of bonus level functionality
+     * @param bonusPointsBalance The current number of bonus points beloning to the member
+     * @param name The name of the bonus member
+     * @param eMailAddress The emailaddress of the bonus member
+     * @param password The password of the bonus member
+     */
     BonusMember(int memberNumber, LocalDate enrolledDate, int bonusPointsBalance, String name, String eMailAddress, String password) {
         this.memberNumber = memberNumber;
         this.enrolledDate = enrolledDate;
@@ -23,40 +39,76 @@ public class BonusMember {
         this.checkAndSetMembership();
     }
 
+    /**
+     *
+     * @return The member number of the referenced member object
+     */
     public int getMemberNumber() {
         return this.memberNumber;
     }
 
+    /**
+     *
+     * @return The password of the referenced member object
+     */
     public String getPassword() {
         return this.password;
     }
 
+    /**
+     *
+     * @return The bonus point balance of the referenced member object
+     */
     public int getBonusPointsBalance() {
         return this.bonusPointsBalance;
     }
 
+    /**
+     *
+     * @return The name of the referenced member object
+     */
     public String getName() {
         return this.name;
     }
 
+    /**
+     *
+     * @return the emailaddress of the referenced member object
+     */
     public String geteMailAddress() {
         return this.eMailAddress;
     }
 
+    /**
+     *
+     * @return The date of enrollment of the referenced member object
+     */
     public LocalDate getEnrolledDate() {
         return this.enrolledDate;
     }
 
+    /**
+     *
+     * @return The membership level of the referenced member object, Object
+     */
     public Membership getMembership() {
         return this.membership;
     }
 
+    /**
+     *
+     * @param membership the membership level you want to set for the bonus member
+     */
     public void setMembership(Membership membership) {
         this.membership = membership;
     }
 
-
-
+    /**
+     *
+     * @param password
+     * @return {@code true} if the checked password is correct
+     *          {@code false} if the checked password is incorrect
+     */
     public boolean checkPassword(String password) {
         if (password.equals(this.getPassword())) {
             return true;
@@ -66,6 +118,9 @@ public class BonusMember {
         }
     }
 
+    /**
+     * Checks the bonus point balance and the current membership level, adjusting the membership level if necessary
+     */
     private void checkAndSetMembership() {
         int currentMemberPoints = this.getBonusPointsBalance();
 
@@ -80,6 +135,11 @@ public class BonusMember {
         }
     }
 
+    /**
+     * Registers new points to a member, before checking the membershiplevel and adjusting i necessary,
+     * using the checkAndSetMembership method
+     * @param newPoints The amount of new points given to a member
+     */
     public void registerBonusPoints(int newPoints) {
             this.bonusPointsBalance = this.membership.registerPoints(this.getBonusPointsBalance(), newPoints);
             this.checkAndSetMembership();

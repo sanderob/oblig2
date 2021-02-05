@@ -7,8 +7,9 @@ import java.util.Map;
  * functionality for adding members to the register, looking up bonus points
  * of given members, registering new bonus points and listing all the members.
  *
- * @author Sander O. Brekke
+ * @author Sander
  * @author Arne
+ * @version 1.0.0
  */
 public class MemberArchive {
 
@@ -46,14 +47,14 @@ public class MemberArchive {
 
 
     /**
-     * Registers new bonuspoints to the member with the member number given
+     * Registers new bonus points to the member with the member number given
      * by the parameter {@code memberNumber}. If no member in the register
      * matches the provided member number, {@code false} is returned.
      *
      * @param memberNumber the member number to add the bonus points to
      * @param bonusPoints the bonus points to be added
-     * @return {@code true} if bonuspoints were added successfully,
-     *         {@code flase} if not.
+     * @return {@code true} if bonus points were added successfully,
+     *         {@code false} if not.
      */
     public boolean registerPoints(int memberNumber, int bonusPoints) {
         boolean success = false;
@@ -78,6 +79,11 @@ public class MemberArchive {
         }
     }
 
+    /**
+     * A method for printing the details of one member
+     * @param member the member the details are printed for
+     * @param topRow a boolean for whether or not the top explanatory row is necessary
+     */
     public void printMemberDetails(BonusMember member, Boolean topRow) {
         if (topRow) {
             System.out.println("-----------------------");
@@ -87,15 +93,25 @@ public class MemberArchive {
                 + "     " + member.getBonusPointsBalance() + "     " + member.getMembership().getMembershipName()  + "     " + member.getEnrolledDate());
     }
 
+    /**
+     * Finds a member object according to corresponding member number
+     * @param memberNumber the member number of the member you want to find
+     * @return the member with the correct member number. May return Null.
+     */
     public BonusMember findMember(int memberNumber) {
-        BonusMember member = this.members.get(memberNumber);
-        return member;
+        return this.members.get(memberNumber);
     }
 
 
+    /**
+     * Returns the correct amount of bonus points for a bonus member
+     * @param memberNumber the member number of the given member
+     * @param password the password for the given member
+     * @return the number of bonus points the member has acquired
+     */
     public int findPoints(int memberNumber, String password) {
         BonusMember member = findMember(memberNumber);
-        if (member.equals(null) || !member.getPassword().equals(password)) {
+        if (member.equals(null) || !member.checkPassword(password)) {
             return -1;
         }
         else {
