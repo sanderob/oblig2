@@ -99,7 +99,12 @@ public class MemberArchive {
      * @return the member with the correct member number. May return Null.
      */
     public BonusMember findMember(int memberNumber) {
-        return this.members.get(memberNumber);
+        try {
+            return this.members.get(memberNumber);
+        } catch (Exception e) {
+            return null;
+        }
+
     }
 
 
@@ -111,7 +116,7 @@ public class MemberArchive {
      */
     public int findPoints(int memberNumber, String password) {
         BonusMember member = findMember(memberNumber);
-        if (member.equals(null) || !member.checkPassword(password)) {
+        if (findMember(memberNumber).equals(null) || !member.checkPassword(password)) {
             return -1;
         }
         else {

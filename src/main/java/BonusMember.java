@@ -125,13 +125,13 @@ public class BonusMember {
         int currentMemberPoints = this.getBonusPointsBalance();
 
         if (currentMemberPoints >= GOLD_LIMIT) {
-            this.membership = new GoldMembership();
+            this.setMembership(new GoldMembership());
         }
         else if(currentMemberPoints >= SILVER_LIMIT) {
-            this.membership = new SilverMembership();
+            this.setMembership(new SilverMembership());
         }
         else {
-            this.membership = new BasicMembership();
+            this.setMembership(new BasicMembership());
         }
     }
 
