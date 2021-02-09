@@ -34,10 +34,10 @@ class BonusMemberTest {
     void checkAndSetMembershipAndRegisterBonusPointsTest() {
         LocalDate date = LocalDate.now();
         BonusMember member = new BonusMember(1, date, 5000, "Test", "test@gmail.com", "password");
-        assertTrue(member.getMembership() instanceof BasicMembership);
+        assertTrue(member.getMembership().getMembershipName().equals("Basic"));
         member.registerBonusPoints(21000);
-        assertTrue(member.getMembership() instanceof SilverMembership);
+        assertEquals(member.getMembership().getMembershipName(), ("Silver"));
         member.registerBonusPoints(60000);
-        assertTrue(member.getMembership() instanceof GoldMembership);
+        assertEquals(member.getMembership().getMembershipName(), ("Gold"));
     }
 }
