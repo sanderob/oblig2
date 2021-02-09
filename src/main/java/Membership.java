@@ -19,4 +19,19 @@ public abstract class Membership {
      */
     public abstract String getMembershipName();
 
+    public Membership createMembership(/*String membershipType*/) {
+
+        return new BasicMembership();
+
+       /* if (membershipType.equals("basic")) {
+            return new BasicMembership();
+        }
+        else if (membershipType == "silver") {
+            return new SilverMembership();
+        }
+        else {
+            return new GoldMembership();
+        }*/
+    }
+
 }

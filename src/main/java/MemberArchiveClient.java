@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 
+
 /**
  * A simple client program to test the functionality of the
  * MemberArchive and underlying classes.

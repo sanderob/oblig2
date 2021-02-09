@@ -97,10 +97,10 @@ public class BonusMember {
 
     /**
      *
-     * @param membership the membership level you want to set for the bonus member
+     * @param newMembership the membership level you want to set for the bonus member
      */
-    public void setMembership(Membership membership) {
-        this.membership = membership;
+    public void setMembership(Membership newMembership) {
+        this.membership = newMembership;
     }
 
     /**
@@ -125,13 +125,13 @@ public class BonusMember {
         int currentMemberPoints = this.getBonusPointsBalance();
 
         if (currentMemberPoints >= GOLD_LIMIT) {
-            this.setMembership(new GoldMembership());
+            this.setMembership(this.membership.createMembership());
         }
         else if(currentMemberPoints >= SILVER_LIMIT) {
-            this.setMembership(new SilverMembership());
+            this.setMembership(this.membership.createMembership());
         }
         else {
-            this.setMembership(new BasicMembership());
+            this.setMembership(this.membership.createMembership());
         }
     }
 
