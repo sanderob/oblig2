@@ -1,0 +1,7 @@
+BasicMembership.class
+GoldMembership.class
+SilverMembership.class
+MemberArchive.class
+MemberArchiveClient.class
+Membership.class
+BonusMember.class
